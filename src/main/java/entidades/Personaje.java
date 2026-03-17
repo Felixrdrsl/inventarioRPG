@@ -17,7 +17,7 @@ public class Personaje {
     public Personaje(String nombre) {
         this.nombre = nombre;
         this.inventario = new HashMap<>();
-        this.equipo = new TreeMap<>();
+        this.equipo = new TreeMap<>(Comparator.comparing(TipoEquipamiento::toString));
     }
 
     /**
@@ -66,6 +66,7 @@ public class Personaje {
             Item antiguo = equipo.get(tipoEquipamiento);
             inventario.put(antiguo.getNombre(), antiguo);
         }
+        //ToDO - Habria que comprobar TipoItem para ver si puedo ponerlo donde corresponde
         //Poner de nuevo
         equipo.put(tipoEquipamiento, item);
         //Eliminar el nuevo item del inventario
@@ -92,9 +93,5 @@ public class Personaje {
 
 
 
-    }
-
-
-
-
 }
+
